@@ -45,9 +45,9 @@ if dados_user:
     base = carregar_dados()
 
     st.navigation({
-        'Home': [st.Page('pagina', 'titulo')],
+        'Home': [st.Page('home.py', 'titulo')],
         'Dashbords': [st.Page()],
-        'Conta': [st.Page()]
+        'Conta': [st.Page(logout, 'Sair')]
     })
 
     st.title('Projeto Analise Empresarial')
