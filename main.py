@@ -10,11 +10,11 @@ credenciais = {'username': {
 }
 authenticator = stauth.Authenticate(credenciais, "credenciais_projeto", 'ad1231das#@#$%87**90', cookie_expiry_days=30)
 
-def autenticar_user():
+def autenticar_user(authenticator):
     authenticator.login()
 
 
-def logout():
+def logout(authenticator):
     authenticator.logout()
 
 
