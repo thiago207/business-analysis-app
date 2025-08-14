@@ -44,6 +44,12 @@ if dados_user:
 
     base = carregar_dados()
 
+    st.navigation({
+        'Home': [st.Page('pagina', 'titulo')],
+        'Dashbords': [st.Page()],
+        'Conta': [st.Page()]
+    })
+
     st.title('Projeto Analise Empresarial')
     st.write(f"Bem vindo, ....")
     st.table(base.head(10))
