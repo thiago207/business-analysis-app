@@ -43,6 +43,6 @@ if dados_user:
     base = carregar_dados()
 
     st.title('Projeto Analise Empresarial')
-    st.write("Bem vindo, ...")
+    st.write(f"Bem vindo, ....")
     st.table(base.head(10))
 
