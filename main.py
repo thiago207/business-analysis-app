@@ -4,29 +4,42 @@ import streamlit_authenticator as stauth
 
 
 #CREDENCIAIS DO USUARIO:
-credenciais = {'username': {
-    'thiago@gmail.com': {'name': 'thiago', 'senha': 1234},
-    'login@gmail.com': {'name': 'login', 'senha': 123}
-    
-}
+credenciais = {
+    'usernames': {
+        'thiago@gmail.com': {'name': 'Thiago', 'password': '1234'},
+        'login@gmail.com': {'name': 'Login', 'password': '123'}
+    }
 }
 
 #AUTENTICADOR:
-authenticator = stauth.Authenticate(credenciais, "credenciais_projeto", 'ad1231das#@#$%87**90', cookie_expiry_days=30)
+authenticator = stauth.Authenticate(
+    credenciais, 
+    "credenciais_projeto", #nome do cookie
+    'ad1231das#@#$%87**90',  #chave secreta
+    cookie_expiry_days=30
+    )
 
 
 def autenticar_user(authenticator):
-    nome, status_autenticacao, username = authenticator.login()
+    nome, status_autenticacao, username = authenticator.login(
+      'Login',
+      'main'
+      )
 
     if status_autenticacao:
         return {'nome': nome, 'username': username}
+    
     elif status_autenticacao == False:
         st.error('Login ou senha errada.')
+
     else:
         st.error('Preencha o formulario')
     
 def logout(authenticator):
-    authenticator.logout()
+    authenticator.logout(
+      'Sair',
+      'sidebar'
+      )
 
 #AUTENTICAR USER:
 dados_user = autenticar_user(authenticator)
