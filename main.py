@@ -29,7 +29,7 @@ def autenticar_user(authenticator):
     else:
         st.error('Preencha o formulario')
     
-def logout(authenticator):
+def logout():
     authenticator.logout()
 
 #AUTENTICAR USER:
@@ -44,13 +44,13 @@ if dados_user:
 
     base = carregar_dados()
 
-    st.navigation({
-        'Home': [st.Page('home.py', 'titulo')],
-        'Dashbords': [st.Page()],
-        'Conta': [st.Page(logout, 'Sair')]
+    pg = st.navigation({
+        'Home': [st.Page('home.py', title='Home')],
+        'Dashbords': [st.Page('dashboard.py', title='Dashboards'), (st.Page('indicadores.py', title='indicadores'))],
+        'Conta': [st.Page(logout, title='Sair'), st.Page('criar_conta.py', title='Criar Conta')]
     })
 
-    st.title('Projeto Analise Empresarial')
-    st.write(f"Bem vindo, ....")
-    st.table(base.head(10))
+    pg.run()
+
+    
 
