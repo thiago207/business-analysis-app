@@ -3,11 +3,13 @@ import pandas as pd
 import streamlit_authenticator as stauth
 
 
+senha_criptografada = stauth.Hasher('1234', '123').generate()
+
 #CREDENCIAIS DO USUARIO:
 credenciais = {
     'usernames': {
-        'thiago@gmail.com': {'name': 'Thiago', 'password': '1234'},
-        'login@gmail.com': {'name': 'Login', 'password': '123'}
+        'thiago@gmail.com': {'name': 'Thiago', 'password': senha_criptografada[0]},
+        'login@gmail.com': {'name': 'Login', 'password': senha_criptografada[1]}
     }
 }
 
