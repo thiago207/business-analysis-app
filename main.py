@@ -1,6 +1,23 @@
 import streamlit as st
 import pandas as pd
-import streamlit
+import streamlit_authenticator as stauth
+
+credenciais = {'username': {
+    'thiago@gmail.com': {'name': 'thiago', 'senha': 1234},
+    'login@gmail.com': {'name': 'login', 'senha': 123}
+    
+}
+}
+authenticator = stauth.Authenticate(credenciais, "credenciais_projeto", 'ad1231das#@#$%87**90', cookie_expiry_days=30)
+
+def autenticar_user():
+    authenticator.login()
+
+
+def logout():
+    authenticator.logout()
+
+
 
 @st.cache_data
 def carregar_dados():
