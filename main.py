@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+import streamlit
 
 @st.cache_data
 def carregar_dados():
@@ -11,5 +11,5 @@ base = carregar_dados()
 
 st.title('Projeto Analise Empresarial')
 st.write("Bem vindo, ...")
-st.table(base)
+st.table(base.head(10))
 
