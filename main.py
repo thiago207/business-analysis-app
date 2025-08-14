@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit_authenticator as stauth
 
 
-senha_criptografada = stauth.Hasher('1234', '123').generate()
+senha_criptografada = stauth.Hasher(['1234', '123']).generate()
 
 #CREDENCIAIS DO USUARIO:
 credenciais = {
