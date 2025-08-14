@@ -11,9 +11,15 @@ credenciais = {'username': {
 authenticator = stauth.Authenticate(credenciais, "credenciais_projeto", 'ad1231das#@#$%87**90', cookie_expiry_days=30)
 
 def autenticar_user(authenticator):
-    authenticator.login()
+    nome, status_autenticacao, username = authenticator.login()
 
-
+    if status_autenticacao:
+        return {'nome': nome, 'username': username}
+    elif status_autenticacao == False:
+        st.error('Login ou senha errada.')
+    else:
+        st.error('Preencha o formulario')
+    
 def logout(authenticator):
     authenticator.logout()
 
