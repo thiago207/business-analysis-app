@@ -2,13 +2,18 @@ import streamlit as st
 import pandas as pd
 import streamlit_authenticator as stauth
 
+
+#CREDENCIAIS DO USUARIO:
 credenciais = {'username': {
     'thiago@gmail.com': {'name': 'thiago', 'senha': 1234},
     'login@gmail.com': {'name': 'login', 'senha': 123}
     
 }
 }
+
+#AUTENTICADOR:
 authenticator = stauth.Authenticate(credenciais, "credenciais_projeto", 'ad1231das#@#$%87**90', cookie_expiry_days=30)
+
 
 def autenticar_user(authenticator):
     nome, status_autenticacao, username = authenticator.login()
@@ -23,16 +28,19 @@ def autenticar_user(authenticator):
 def logout(authenticator):
     authenticator.logout()
 
+#AUTENTICAR USER:
+dados_user = autenticar_user(authenticator)
 
 
-@st.cache_data
-def carregar_dados():
-    tabela = pd.read_excel(r"C:\Users\Pichau\Documents\estudos\projeto-analise-empresarial-app\business-analysis-app\Base.xlsx")
-    return tabela
+if dados_user:
+    @st.cache_data
+    def carregar_dados():
+        tabela = pd.read_excel(r"C:\Users\Pichau\Documents\estudos\projeto-analise-empresarial-app\business-analysis-app\Base.xlsx")
+        return tabela
 
-base = carregar_dados()
+    base = carregar_dados()
 
-st.title('Projeto Analise Empresarial')
-st.write("Bem vindo, ...")
-st.table(base.head(10))
+    st.title('Projeto Analise Empresarial')
+    st.write("Bem vindo, ...")
+    st.table(base.head(10))
 
