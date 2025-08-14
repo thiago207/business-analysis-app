@@ -4,7 +4,9 @@ import pandas as pd
 
 @st.cache_data
 def carregar_dados(dados):
-    tabela = pd.read_csv()
+    tabela = pd.read_csv("Base.xlsx")
+    return tabela
+
 
 
 st.title('Projeto Analise Empresarial')
