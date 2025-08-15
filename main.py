@@ -6,15 +6,16 @@ from models import session, User
 
 lista_de_user = session.query(User).all()
 
-senha_criptografada = stauth.Hasher(['1234', '123']).generate()
-
 #CREDENCIAIS DO USUARIO:
 credenciais = {
-    'usernames': {
-        'thiago@gmail.com': {'name': 'Thiago', 'password': senha_criptografada[0]},
-        'login@gmail.com': {'name': 'Login', 'password': senha_criptografada[1]}
-    }
+    'usernames': 
+        {
+            User.email: {'name': User.nome, 'password': User.senha}
+            for u in lista_de_user
+        }
+        
 }
+
 
 #AUTENTICADOR:
 authenticator = stauth.Authenticate(
