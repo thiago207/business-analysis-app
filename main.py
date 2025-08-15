@@ -9,7 +9,7 @@ lista_de_user = session.query(User).all()
 #CREDENCIAIS DO USUARIO:
 credenciais = {
     'usernames': {
-        str(u.email).lower(): {'name': u.nome, 'password': u.senha}
+        str(u.email): {'name': u.nome, 'password': u.senha}
         for u in lista_de_user
     }
 }
@@ -52,6 +52,4 @@ if dados_user:
     })
 
     pg.run()
-
-    
 
