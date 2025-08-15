@@ -4,7 +4,7 @@ import streamlit_authenticator as stauth
 from models import session, User    
 
 
-
+lista_de_user = session.query(User).all()
 
 senha_criptografada = stauth.Hasher(['1234', '123']).generate()
 
