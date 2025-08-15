@@ -10,7 +10,7 @@ lista_de_user = session.query(User).all()
 credenciais = {
     'usernames': 
         {
-            User.email: {'name': User.nome, 'password': User.senha}
+            str(u.email): {'name': u.nome, 'password': u.senha}
             for u in lista_de_user
         }
         
