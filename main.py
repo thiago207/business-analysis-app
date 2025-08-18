@@ -42,14 +42,29 @@ if dados_user:
     def carregar_dados():
         tabela = pd.read_excel(r"C:\Users\Pichau\Documents\estudos\projeto-analise-empresarial-app\business-analysis-app\Base.xlsx")
         return tabela
-    
+
     base = carregar_dados()
 
-    pg = st.navigation({
+    email_user = dados_user['username']
+    user = session.query(User).filter_by(email=email_user).first()
+
+  
+    if user.admin:
+        pg = st.navigation(
+            {
+            'Home': [st.Page('home.py', title='Home')],
+            'Dashbords': [st.Page('dashboard.py', title='Dashboards'), (st.Page('indicadores.py', title='indicadores'))],
+            'Conta': [st.Page(logout, title='Sair'), st.Page('criar_conta.py', title='Criar Conta')]
+        }
+        )
+    else:
+          pg = st.navigation(
+        {
         'Home': [st.Page('home.py', title='Home')],
         'Dashbords': [st.Page('dashboard.py', title='Dashboards'), (st.Page('indicadores.py', title='indicadores'))],
         'Conta': [st.Page(logout, title='Sair'), st.Page('criar_conta.py', title='Criar Conta')]
-    })
+    }
+    )
 
     pg.run()
 
