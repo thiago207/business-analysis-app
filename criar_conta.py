@@ -11,7 +11,7 @@ botao_submit = form.form_submit_button('Enviar')
 
 if botao_submit:
     lista_user_existentes = session.query(User).filter_by(email=email_user).all()
-    
+
     if len(lista_user_existentes) > 0: 
         st.write('Ja existe conta cadrastada com esse Email')
 
@@ -22,3 +22,5 @@ if botao_submit:
     usuario = User(nome=nome_user, email=email_user, senha=senha_criptografada, admin=admin_user)
     session.add(usuario)
     session.commit()    
+    st.write('Usuario Criado!')
+    st.switch_page('home.py')
