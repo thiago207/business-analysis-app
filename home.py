@@ -3,7 +3,7 @@ import streamlit as st
 #containers
 #columns
 
-coluna_esquerda, coluna_direita = st.columns([1, 2])
+coluna_esquerda, coluna_direita = st.columns([1.2, 2])
 
 
 with coluna_esquerda:
@@ -13,7 +13,8 @@ with coluna_esquerda:
     botao_indicadores = st.button("Indicadores Projeto")
 
 with coluna_direita:
-    st.image('imagens/home_png.png', use_column_width=True)
+    
+    st.image('imagens/home_png.png')
 
 if botao_dashboard:
     st.switch_page('dashboard.py')
