@@ -10,10 +10,11 @@ admin_user = form.checkbox('É um admin? ')
 botao_submit = form.form_submit_button('Enviar')
 
 if botao_submit:
-    lista_user_existentes = session.query(User).filter_by(email_user=email_user).all()
+    lista_user_existentes = session.query(User).filter_by(email=email_user).all()
+    
     if len(lista_user_existentes) > 0: 
         st.write('Ja existe conta cadrastada com esse Email')
-        
+
     elif len(email_user) < 5 or len(senha_user) < 3:
         st.write('Preencha corretamente os dados')
 
