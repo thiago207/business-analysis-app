@@ -38,13 +38,6 @@ dados_user = autenticar_user(authenticator)
 
 
 if dados_user:
-    @st.cache_data
-    def carregar_dados():
-        tabela = pd.read_excel(r"C:\Users\Pichau\Documents\estudos\projeto-analise-empresarial-app\business-analysis-app\Base.xlsx")
-        return tabela
-
-    base = carregar_dados()
-
     email_user = dados_user['username']
     user = session.query(User).filter_by(email=email_user).first()
 
