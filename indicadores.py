@@ -32,5 +32,16 @@ card('total_pago.png', f'R${base_fechados["Valor Negociado"].sum():,}', 'Total P
 card('desconto.png', f'R${base_fechados["Desconto Concedido"].sum():,}', 'Total Desconto', coluna_meio)
 
 
-st.table(dados.head(15))
 
+import plotly.express as px
+
+dados_grafico_funil = dados.groupby('Status', as_index=False).count()
+dados_grafico_funil = dados_grafico_funil.rename(columns={'Código Projeto': 'Quantidade'})
+dados_grafico_funil = dados_grafico_funil.sort_values(by='Quantidade', ascending=False)
+
+
+
+grafico = px.funnel(dados_grafico_funil, x='Quantidade', y='Status')
+
+
+st.plotly_chart(grafico)
