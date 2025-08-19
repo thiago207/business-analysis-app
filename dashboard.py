@@ -17,7 +17,7 @@ base = base[(base['Setor'] == setor) & (base['Status'] == status)]
 
 container =  st.container(border=True)
 
-base_mensal = base.groupby(base['Data Chegada'].dt.to_period('M')).sum(numeric_only=True)
+base_mensal = base.groupby(base['Data Chegada'].dt.to_period('M')).sum(numeric_only=True).reset_index()
 
 
 with container:
