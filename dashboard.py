@@ -46,8 +46,7 @@ with container:
     st.plotly_chart(grafico_area)
 
 
-    #grafico de coluna
-    #grafico_barra = px.bar(base_mensal)
+    
     
     coluna_esquerda, coluna_direita = st.columns([3, 1])
     coluna_esquerda.write('### Comparação Orçado X Pago')
@@ -67,4 +66,15 @@ with container:
 
     
 
-    #st.plotly_chart(grafico_barra)
+    #grafico barra
+    import plotly.graph_objects as go
+
+    grafico_barras = go.Figure(data=[
+        go.Bar(name='Valor Orçado', x=base_mensal['Data Chegada'] , y=base_mensal['Valor Orçado'], text=base_mensal['Valor Orçado']),
+        go.Bar(name='Valor Negociado', x=base_mensal['Data Chegada'] , y=base_mensal['Valor Negociado'], text=base_mensal['Valor Negociado'])
+    ]
+    )
+
+    grafico_barras.update_layout(barmode='group')
+
+    st.plotly_chart(grafico_barras)
