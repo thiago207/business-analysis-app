@@ -48,12 +48,23 @@ with container:
 
     #grafico de coluna
     #grafico_barra = px.bar(base_mensal)
-    st.write('### Comparação Orçado X Pago')
-    coluna_esquerda, coluna_direita = st.columns([1, 1])
-
+    
+    coluna_esquerda, coluna_direita = st.columns([3, 1])
+    coluna_esquerda.write('### Comparação Orçado X Pago')
     #ano
     base_mensal['Ano'] = base_mensal['Data Chegada'].dt.year
     lista_de_anos = list(base_mensal['Ano'].unique())
-    ano_selecionado = coluna_direita.selectbox(lista_de_anos)
+    ano_selecionado = coluna_direita.selectbox('Ano', lista_de_anos)
+
+    coluna_esquerda, coluna_direita = st.columns([1, 1])
+
+    base_mensal = base_mensal[base_mensal['Ano'] == ano_selecionado]
+    total_pago = base_mensal['Valor Negociado'].sum()
+    total_desconto = base_mensal['Desconto Concedido'].sum()
+
+    coluna_esquerda.metric('Total Pago', f'R${total_pago:,}')
+    coluna_direita.metric('Total Desconto', f'R${total_desconto:,}')
+
+    
 
     #st.plotly_chart(grafico_barra)
