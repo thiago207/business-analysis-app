@@ -1,5 +1,3 @@
-# business-analysis-app
-
 #  Business Analysis App
 
 Aplicação web desenvolvida em **Python** com **Streamlit**, voltada para análise de dados empresariais. O sistema conta com:
@@ -15,10 +13,10 @@ Aplicação web desenvolvida em **Python** com **Streamlit**, voltada para anál
 ##  Funcionalidades
 
 - 🛡 **Login e autenticação** com privilégio administrador.
--  Senhas armazenadas de forma segura, utilizando **hash** (como `bcrypt`).
--  Banco de dados local (por exemplo, SQLite) para gerenciamento de usuários e credenciais.
+-  Senhas armazenadas de forma segura.
+-  Banco de dados local (SQLite) para gerenciamento de usuários e credenciais.
 -  Cálculo de indicadores-chave usando **Pandas** (métricas como soma, média, contagem, agrupamentos etc.).
--  **Dashboards interativos** usando **Matplotlib / Pyplot**, exibindo gráficos dinâmicos com base nos dados.
+-  **Dashboards interativos** usando **Pyplot**, exibindo gráficos dinâmicos com base nos dados.
 -  Interface via **Streamlit**, acessível diretamente do navegador.
 
 ---
@@ -30,10 +28,6 @@ Aplicação web desenvolvida em **Python** com **Streamlit**, voltada para anál
 - **Pandas** — manipulação e análise de dados
 - **Matplotlib / Pyplot** — visualização de dados
 - **SQLite** (ou outro banco relacional) — persistência de dados
-- **bcrypt** (ou similar) — criptografia de senhas
 - Outras bibliotecas conforme necessário (ex. `sqlalchemy`, `streamlit-authenticator`)
 
 ---
-
-##  Estrutura do Projeto
-
