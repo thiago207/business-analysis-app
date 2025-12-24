@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, Integer, String, Boolean, Column
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-db =  create_engine('sqlite:///datebase/meubanco.db')
+db = create_engine('sqlite:///datebase/meubanco.db')
 Session = sessionmaker(bind=db)
 session = Session()
 
@@ -14,7 +14,7 @@ class User(Base):
     nome = Column('nome', String)
     email = Column('email', String)
     senha = Column('senha', String)
-    admin = Column('adim', Boolean)
+    admin = Column('admin', Boolean)  # CORRIGIDO: era 'adim'
 
     def __init__(self, nome, email, senha, admin=False):
         self.nome = nome

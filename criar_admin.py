@@ -1,7 +1,19 @@
 from models import session, User
 import streamlit_authenticator as stauth
 
-senha_criptografada = stauth.Hasher(['123123']).generate()[0]
-usuario = User(nome='thiago2', email='thiago2@gmail.com', senha=senha_criptografada, admin=False)
+# Versão atualizada do Hasher
+senha_criptografada = stauth.Hasher.hash('123123')
+
+usuario = User(
+    nome='Admin',
+    email='admin@gmail.com',
+    senha=senha_criptografada,
+    admin=True
+)
+
 session.add(usuario)
-session.commit()      
+session.commit()
+
+print("✅ Usuário admin criado com sucesso!")
+print(f"Email: admin@gmail.com")
+print(f"Senha: 123123")
